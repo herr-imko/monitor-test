@@ -1,0 +1,44 @@
+.custom-table {
+	min-width: 100%;
+	border-spacing: 0;
+	border-collapse: collapse;
+
+	td,
+	th {
+		border: 1px solid var(--color-grey1);
+
+		&:has(input:only-child) {
+			width: 0;
+		}
+	}
+
+	thead {
+		text-align: left;
+		background: var(--color-grey);
+
+		th {
+			padding: 8px;
+			font-size: 17px;
+			font-weight: 400;
+			line-height: 22px;
+		}
+	}
+
+	tbody {
+		font-size: 16px;
+		font-weight: 400;
+		line-height: 22px;
+
+		td {
+			padding: 6px 9px;
+		}
+
+		tr {
+			transition: background-color var(--default-duration) ease;
+
+			&:has(input:checked) {
+				background-color: var(--color-blue2);
+			}
+		}
+	}
+}

@@ -1,28 +1,32 @@
 .tabs {
-	input:is(&__controller) {
-		visibility: hidden;
-		position: absolute;
-		pointer-events: none;
+	&__controls {
+		display: flex;
+		overflow: auto;
+		background: linear-gradient(0deg, var(--color-grey1), var(--color-grey1) 1px, transparent 1px);
 	}
 
 	&__control {
-		&__visual {
-			cursor: pointer;
-			user-select: none;
+		padding: 8px 12px;
+		border-width: 1px 1px 0 1px;
+		border-style: solid;
+		border-color: transparent;
+		font-size: 16px;
+		font-weight: 400;
+		line-height: 24px;
+		border-radius: 4px 4px 0 0;
+		cursor: pointer;
+		color: var(--color-blue);
 
-			&:is(.tabs__controller:checked ~ &) {}
-
-			&:is(.tabs__controller:not(:checked) ~ &) {}
+		&.is-active {
+			background-color: var(--color-grey);
+			border-color: var(--color-grey1);
+			color: var(--color-black);
 		}
 	}
 
 	&__content {
-		&__visual {
-			&:is(.tabs__controller:checked ~ &) {}
-
-			&:is(.tabs__controller:not(:checked) ~ &) {
-				display: none;
-			}
+		&:not(.is-active) {
+			display: none;
 		}
 	}
 }

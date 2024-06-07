@@ -21,7 +21,44 @@ document.addEventListener('DOMContentLoaded', function () {
 	// initDropzone()
 	// initAnimates()
 	initResize()
+	initCheckAll()
+	initTabs()
 })
+
+function initTabs() {
+	document.querySelectorAll(".tabs").forEach(tabs => {
+		let controls = tabs.querySelectorAll(".tabs__control")
+		let contents = tabs.querySelectorAll(".tabs__content")
+		controls.forEach((control, index) => {
+			control.addEventListener("click", () => {
+				controls.forEach((control, jndex) => {
+					control.classList.toggle("is-active", index == jndex)
+				})
+				contents.forEach((content, jndex) => {
+					content.classList.toggle("is-active", index == jndex)
+				})
+			})
+		})
+	})
+}
+
+function initCheckAll() {
+	document.querySelectorAll("table").forEach(table => {
+		let headCheckbox = table.querySelector("thead input[type=checkbox]")
+		let bodyCheckboxex = table.querySelectorAll("tbody input[type=checkbox]")
+
+		bodyCheckboxex.forEach(checkbox => {
+			checkbox.addEventListener("change", () => {
+				headCheckbox.checked = table.matches(':not(:has(tbody input:not(:checked)))')
+			})
+		})
+		headCheckbox?.addEventListener("change", () => {
+			bodyCheckboxex.forEach(checkbox => {
+				checkbox.checked = headCheckbox.checked
+			})
+		})
+	})
+}
 
 function initResize() {
 	document.querySelectorAll(".slider-view").forEach(slider => {

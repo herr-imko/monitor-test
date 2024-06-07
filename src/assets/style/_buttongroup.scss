@@ -6,8 +6,13 @@
 		color: var(--color-black);
 	}
 
-	&__button {
+	&--high &__button {
 		padding: 10px 16px;
+		height: auto;
+		font-size: 18px;
+	}
+
+	&__button {
 		display: flex;
 		align-items: center;
 		gap: 5px;
@@ -16,11 +21,11 @@
 		border-width: 1px;
 		--size: 24px;
 		cursor: pointer;
-
-		&:has(span.icon:only-child) {
-			padding: 0 8px;
-			height: var(--button-height);
-		}
+		height: var(--button-height);
+		padding: 0 8px;
+		font-size: 14px;
+		font-weight: 400;
+		line-height: 133%;
 
 		&.is-active {
 			color: var(--color-black);

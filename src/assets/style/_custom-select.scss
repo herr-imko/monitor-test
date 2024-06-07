@@ -1,0 +1,28 @@
+.custom-select {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	font-size: 16px;
+	font-weight: 400;
+
+	select {
+		appearance: none;
+		height: var(--button-height);
+		border: 1px solid var(--color-grey2);
+		padding: 0 36px 0 12px;
+		border-radius: 4px;
+		font-size: 14px;
+		font-weight: 400;
+		background-color: #fff;
+		background-image: url(/src/assets/static/img/icon/down.svg);
+		background-repeat: no-repeat;
+		background-position: center right 12px;
+		background-size: 12px;
+	}
+
+	&-group {
+		display: flex;
+		gap: 20px;
+		flex-wrap: wrap;
+	}
+}

@@ -1,0 +1,49 @@
+.equipment {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+
+	&__content {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+		padding-top: 16px;
+	}
+
+	&__header {
+		display: flex;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		gap: 16px;
+	}
+
+	&__breadcrumbs {
+		font-size: 0;
+
+		&__item {
+			font-size: 22px;
+			font-weight: 400;
+
+			&:is(a) {
+				@extend .button, .button--high, .button--grey;
+
+				&::before {
+					content: '';
+					@extend .icon, .icon--menu;
+				}
+			}
+		}
+
+		&__step {
+			font-size: 24px;
+			font-weight: 400;
+			margin: 0 10px;
+		}
+	}
+
+	&__controls {
+		display: flex;
+		justify-content: space-between;
+		gap: 20px;
+	}
+}
