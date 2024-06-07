@@ -1,0 +1,48 @@
+.toggler-checkbox {
+	display: flex;
+	gap: 8px;
+	align-items: center;
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 130%;
+	cursor: pointer;
+	user-select: none;
+
+	input[type="checkbox"] {
+		flex-shrink: 0;
+		appearance: none;
+		width: 28px;
+		height: 16px;
+		border-width: 1px;
+		border-color: currentColor;
+		border-style: solid;
+		border-radius: 666px;
+		display: flex;
+		padding: 1px;
+		color: var(--color-blue3);
+		transition: color var(--default-duration) ease;
+
+		&::before {
+			content: '';
+			flex: 0 0 0;
+			transition: flex var(--default-duration) ease;
+		}
+
+		&::after {
+			content: '';
+			align-self: stretch;
+			width: auto;
+			aspect-ratio: 1;
+			background-color: currentColor;
+			border-radius: 50%;
+		}
+
+		&:checked {
+			color: var(--color-blue);
+
+			&::before {
+				flex: 1 1 0;
+			}
+		}
+	}
+}

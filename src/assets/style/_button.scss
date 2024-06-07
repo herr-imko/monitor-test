@@ -1,1 +1,16 @@
-.button {}
+.button {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	--size: 18px;
+	border: 1px solid currentColor;
+	color: var(--color-blue);
+	border-radius: 4px;
+	padding: 0 12px;
+	min-height: var(--button-height);
+	cursor: pointer;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 20px;
+	letter-spacing: 0.1px;
+}

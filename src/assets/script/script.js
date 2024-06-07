@@ -20,7 +20,34 @@ document.addEventListener('DOMContentLoaded', function () {
 	// initSyncedInputs()
 	// initDropzone()
 	// initAnimates()
+	initResize()
 })
+
+function initResize() {
+	document.querySelectorAll(".slider-view").forEach(slider => {
+		let resizeAccumulator = 0
+		/**
+		 * 
+		 * @param {DragEvent} event 
+		 */
+		function resize(event) {
+			// уменьшает количество рефлоу и репеинт почти вдвое
+			requestAnimationFrame(() => {
+				resizeAccumulator += event.movementX
+				slider.style.setProperty("--resize-delta", `${resizeAccumulator}px`)
+			})
+		}
+		slider.querySelector(".slider-view__resizer").addEventListener("mousedown", function () {
+			slider.addEventListener("mousemove", resize)
+			slider.addEventListener("mouseup", () => {
+				slider.removeEventListener("mousemove", resize)
+			})
+			slider.addEventListener("mouseleave", () => {
+				slider.removeEventListener("mousemove", resize)
+			})
+		})
+	})
+}
 
 function initSyncedInputs() {
 	SyncedInputs.findGroups().forEach(group => {

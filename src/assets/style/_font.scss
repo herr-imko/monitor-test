@@ -1,7 +1,7 @@
 @font-face {
-	font-family: "";
-	src: url(/src/assets/static/font/);
-	font-weight: 500;
+	font-family: "Segoe UI";
+	src: url(/src/assets/static/font/SegoeUI.woff2);
+	font-weight: 400;
 	font-display: swap;
 }
 
@@ -49,6 +49,8 @@ h6,
 
 body,
 input {
+	font-family: "Segoe UI", sans-serif;
+
 	@media screen and (max-width: $mobile) {}
 }
 

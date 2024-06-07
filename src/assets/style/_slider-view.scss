@@ -1,0 +1,43 @@
+.slider-view {
+	display: flex;
+	--resize-delta: 0px;
+	--resizer-width: 12px;
+	flex-grow: 1;
+
+	&__left {
+		overflow: scroll;
+		position: relative;
+		flex: 1 1 calc(50% + var(--resize-delta) - var(--resizer-width) / 2);
+		padding-right: 30px;
+		padding-top: 16px;
+	}
+
+	&__right {
+		overflow: scroll;
+		flex: 1 1 calc(50% - var(--resize-delta) - var(--resizer-width) / 2);
+		padding-left: 30px;
+		padding-top: 16px;
+	}
+
+	&__resizer {
+		cursor: e-resize;
+		flex: 0 0 var(--resizer-width);
+		align-self: stretch;
+		background-color: var(--color-grey);
+		background-image: url(/src/assets/static/img/icon/resize.svg);
+		background-repeat: no-repeat;
+		background-position: center;
+	}
+
+	.biba {
+		width: 500px;
+		height: 100px;
+		background: red;
+	}
+
+	.boba {
+		width: 300px;
+		height: 100px;
+		background: red;
+	}
+}

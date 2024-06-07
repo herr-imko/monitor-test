@@ -1,1 +1,29 @@
-.header {}
+.header {
+	background-color: var(--color-blue);
+	color: #fff;
+
+	&__inner {
+		display: flex;
+		align-items: center;
+		padding: 17px 0;
+	}
+
+	&__logo {
+		width: 80px;
+	}
+
+	&__view {
+		margin-left: auto;
+	}
+
+	&__title {
+		font-size: 28px;
+		font-weight: 400;
+		line-height: 133%;
+		margin-left: 32px;
+	}
+
+	&__nav {
+		margin-left: 86px;
+	}
+}
