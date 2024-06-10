@@ -1,0 +1,22 @@
+.table-form {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 16px;
+	padding: var(--container-padding);
+
+	&__item {
+		input {
+			width: 100%;
+			padding: 8px;
+			border-radius: 4px;
+		}
+	}
+
+	&__footer {
+		grid-column: 1 / -1;
+	}
+
+	button {
+		padding: 8px;
+	}
+}

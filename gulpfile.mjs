@@ -41,9 +41,10 @@ function css() {
 			cascade: false,
 			flexbox: false,
 		}))
-		.pipe(replaceSrc())
+		.pipe(replace("/src/", "../../"))
 		.pipe(sourcemaps.write("./"))
 		.pipe(destGulp.dest("./build/assets/style/"))
+		.pipe(argv.ram ? nothing() : destGulp.dest("./monitor-angular/assets/style/"))
 		.pipe(bs.stream())
 }
 
@@ -66,6 +67,7 @@ function js() {
 		.pipe(replaceSrc())
 		.pipe(sourcemaps.write("./"))
 		.pipe(destGulp.dest("./build/assets/script/"))
+		.pipe(argv.ram ? nothing() : destGulp.dest("./monitor-angular/assets/script/"))
 		.pipe(bs.stream())
 }
 
@@ -93,6 +95,7 @@ function copyStatic() {
 		encoding: false
 	})
 		.pipe(destGulp.dest("./build/assets/static/"))
+		.pipe(argv.ram ? nothing() : destGulp.dest("./monitor-angular/assets/static/"))
 		.pipe(reload())
 }
 

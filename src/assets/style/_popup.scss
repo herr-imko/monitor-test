@@ -12,6 +12,7 @@
 	pointer-events: none;
 	opacity: 0;
 	display: flex;
+	justify-content: center;
 
 	&.is-initialized {
 		transition: opacity var(--default-duration) ease;
@@ -25,7 +26,9 @@
 	&__inner {
 		margin-top: auto;
 		margin-bottom: auto;
-		// @extend .container;
+		width: 100%;
+		max-width: 640px;
 		background-color: #fff;
+		border-radius: 8px;
 	}
 }

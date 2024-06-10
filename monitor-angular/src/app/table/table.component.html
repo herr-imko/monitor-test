@@ -1,0 +1,45 @@
+<table class="custom-table" #root>
+	<thead>
+		<tr>
+			<th *ngIf="hasCheck">
+				<div class="custom-table__cell">
+					<div class="custom-checkbox">
+						<input type="checkbox" #checkAll>
+					</div>
+				</div>
+			</th>
+			<th *ngFor="let th of theads">
+				<div class="custom-table__cell">
+					<span>{{ th.name }}</span>
+				</div>
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngIf="canAdd">
+			<td colspan="10">
+				<div class="custom-table__cell">
+					<div class="measurement__table__add" (click)="edit(false)">
+						<span class="icon icon--plus"></span>
+						<span>Добавить новые замеры</span>
+					</div>
+				</div>
+			</td>
+		</tr>
+		<tr *ngFor="let tr of data; index as i">
+			<td *ngIf="hasCheck">
+				<div class="custom-table__cell">
+					<div class="custom-checkbox">
+						<input type="checkbox" #check>
+					</div>
+				</div>
+			</td>
+			<td *ngFor="let td of tr">
+				<div class="custom-table__cell">
+					<span>{{td}}</span>
+				</div>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<app-popup (save)="save($event)" #popup />

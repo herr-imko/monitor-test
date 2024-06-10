@@ -12,7 +12,7 @@ import { breakpoints, headerHeightToCSS } from "./_helpers"
 
 document.addEventListener('DOMContentLoaded', function () {
 	// headerHeightToCSS()
-	// Popup.initPopups()
+	Popup.initPopups()
 	// initTabs()
 	// initPhoneMask()
 	// initQuantity()

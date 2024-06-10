@@ -68,7 +68,7 @@ function reload() {
 }
 
 function replaceSrc() {
-	return replace("/src/", "/")
+	return replace("/src/", "./")
 }
 
 function clean() {

@@ -1,0 +1,89 @@
+import { AfterViewInit, Component, ElementRef, inject, QueryList, ViewChild, ViewChildren, afterRender, afterNextRender } from '@angular/core'
+import { CommonModule } from '@angular/common'
+import { FakedataService } from '../fakedata.service'
+import { PopupComponent } from '../popup/popup.component'
+
+@Component({
+	selector: 'app-table',
+	standalone: true,
+	imports: [CommonModule, PopupComponent],
+	templateUrl: './table.component.html',
+	styleUrl: './table.component.scss'
+})
+
+export class TableComponent implements AfterViewInit {
+	hasCheck: boolean = true
+	canAdd: boolean = true
+	fakedataService: FakedataService = inject(FakedataService)
+	data: String[][] = []
+	theads: {
+		name: String,
+		editable: boolean,
+		type: String | undefined
+	}[] = []
+	@ViewChild('checkAll') checkAll: ElementRef<HTMLInputElement> | undefined
+	@ViewChild('root') root: ElementRef<HTMLInputElement> | undefined
+	@ViewChild(PopupComponent) popup: PopupComponent | undefined
+	@ViewChildren('check') check: QueryList<ElementRef<HTMLInputElement>> | undefined
+
+	constructor() {
+		let that = this
+		this.fakedataService.getTable().then(data => {
+			this.data = data.data
+			this.theads = data.keys
+		})
+
+		afterRender(() => {
+			this.check?.forEach(checkbox => {
+				checkbox.nativeElement.addEventListener("change", handleCheck)
+			})
+		})
+
+		function handleCheck() {
+			if (that.root && that.checkAll) {
+				that.checkAll.nativeElement.checked = that.root.nativeElement.matches(':not(:has(tbody input:not(:checked)))')
+			}
+		}
+	}
+
+	ngAfterViewInit() {
+		this.checkAll?.nativeElement.addEventListener("change", () => {
+			this.check?.forEach(checkbox => {
+				if (this.checkAll) {
+					checkbox.nativeElement.checked = this.checkAll.nativeElement.checked
+				}
+			})
+		})
+	}
+
+	removeItems() {
+		let toRemove = this.check?.toArray().map((checkbox, i) => checkbox.nativeElement.checked ? i : NaN).filter(Number)
+
+		this.data = this.data.filter(function (value, index) {
+			return toRemove?.indexOf(index) == -1
+		})
+	}
+
+	save(data: {
+		data: String[],
+		index: number
+	}) {
+		if (data.index < 0) {
+			this.data.push(data.data)
+		} else {
+			this.data[data.index] = data.data
+		}
+	}
+
+	edit(editMode: boolean) {
+		if (editMode) {
+			this.check?.toArray().forEach((checkbox, index) => {
+				if (checkbox.nativeElement.checked) {
+					this.popup?.open(this.data[index], this.theads, index, editMode)
+				}
+			})
+		} else {
+			this.popup?.open([], this.theads, -1, editMode)
+		}
+	}
+}

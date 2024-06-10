@@ -1,0 +1,54 @@
+<div class="measurement">
+	<div class="measurement__title">
+		<img src="/src/assets/static/img/doc.webp" alt="">
+		<span>РТСН\НН-2</span>
+	</div>
+	<div class="measurement__controls">
+		<div class="measurement__actions">
+			<div class="button">
+				<span class="icon icon--certificate"></span>
+				<span>Проверить</span>
+			</div>
+			<div class="button">
+				<span class="icon icon--block"></span>
+				<span>Отменить проверку</span>
+			</div>
+			<div class="button" (click)="edit()">
+				<span class="icon icon--edit"></span>
+				<span>Редактировать</span>
+			</div>
+			<div class="button" (click)="remove()">
+				<span class="icon icon--delete"></span>
+				<span>Удалить</span>
+			</div>
+		</div>
+		<div class="measurement__view">
+			<div class="buttongroup buttongroup--light">
+				<div class="buttongroup__button">
+					<span class="icon icon--column"></span>
+				</div>
+				<div class="buttongroup__button is-active">
+					<span class="icon icon--row"></span>
+				</div>
+			</div>
+			<div class="buttongroup buttongroup--light">
+				<div class="buttongroup__button">
+					<span class="icon icon--expand"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="measurement__extra">
+		<div class="measurement__status">
+			<span class="measurement__status__bad">Нет</span>
+			проверенных замеров
+		</div>
+		<label class="toggler-checkbox">
+			<input type="checkbox" name="" id="">
+			<span>Группировать по дате</span>
+		</label>
+	</div>
+	<div class="measurement__table">
+		<app-table />
+	</div>
+</div>
