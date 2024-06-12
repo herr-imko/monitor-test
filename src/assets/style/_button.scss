@@ -13,6 +13,7 @@
 	font-weight: 400;
 	line-height: 20px;
 	letter-spacing: 0.1px;
+	font-family: Roboto, sans-serif;
 
 	&--filled {
 		background-color: var(--color-blue);
@@ -28,5 +29,6 @@
 	&--high {
 		min-height: var(--button-height--high);
 		font-size: 16px;
+		--size: 16px;
 	}
 }

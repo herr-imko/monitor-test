@@ -30,7 +30,6 @@ export class TableComponent implements AfterViewInit {
 	@Input() extraClass: String = ""
 
 	constructor() {
-		let that = this
 		this.fakedataService.getTable().then(data => {
 			this.data = data.data
 			this.theads = data.keys
@@ -38,15 +37,13 @@ export class TableComponent implements AfterViewInit {
 
 		afterRender(() => {
 			this.check?.forEach(checkbox => {
-				checkbox.nativeElement.addEventListener("change", handleCheck)
+				checkbox.nativeElement.addEventListener("change", () => {
+					if (this.root && this.checkAll) {
+						this.checkAll.nativeElement.checked = this.root.nativeElement.matches(':not(:has(tbody input:not(:checked)))')
+					}
+				})
 			})
 		})
-
-		function handleCheck() {
-			if (that.root && that.checkAll) {
-				that.checkAll.nativeElement.checked = that.root.nativeElement.matches(':not(:has(tbody input:not(:checked)))')
-			}
-		}
 	}
 
 	ngAfterViewInit() {

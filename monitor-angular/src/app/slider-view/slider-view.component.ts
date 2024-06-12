@@ -17,24 +17,25 @@ export class SliderViewComponent implements AfterViewInit {
 	}
 
 	ngAfterViewInit() {
-		// это было на скорую руку, а так вообще осуждаю)
-		let that = this
-
-		function resize(event: MouseEvent) {
+		let resize = (event: MouseEvent) => {
 			requestAnimationFrame(() => {
-				that.resizeAccumulator += event.movementX
-				that.slider?.nativeElement.style.setProperty("--resize-delta", `${that.resizeAccumulator}px`)
+				this.resizeAccumulator += event.movementX
+				this.slider?.nativeElement.style.setProperty("--resize-delta", `${this.resizeAccumulator}px`)
 			})
+		}
+
+		let stopResize = () => {
+			this.slider?.nativeElement.removeEventListener("mousemove", resize)
+			this.slider?.nativeElement.classList.remove("is-active")
 		}
 
 		this.resizer?.nativeElement.addEventListener("mousedown", () => {
 			this.slider?.nativeElement.addEventListener("mousemove", resize)
-			this.slider?.nativeElement.addEventListener("mouseup", () => {
-				this.slider?.nativeElement.removeEventListener("mousemove", resize)
-			})
-			this.slider?.nativeElement.addEventListener("mouseleave", () => {
-				this.slider?.nativeElement.removeEventListener("mousemove", resize)
-			})
+			this.slider?.nativeElement.classList.add("is-active")
 		})
+
+		this.slider?.nativeElement.addEventListener("mouseup", stopResize)
+
+		this.slider?.nativeElement.addEventListener("mouseleave", stopResize)
 	}
 }

@@ -45,7 +45,8 @@
 		tr {
 			transition: background-color var(--default-duration) ease;
 
-			&:has(input:checked) {
+			&:has(input:checked),
+			&:hover {
 				background-color: var(--color-blue2);
 			}
 		}

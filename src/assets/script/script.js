@@ -74,14 +74,19 @@ function initResize() {
 				slider.style.setProperty("--resize-delta", `${resizeAccumulator}px`)
 			})
 		}
-		slider.querySelector(".slider-view__resizer").addEventListener("mousedown", function () {
+		slider.querySelector(".slider-view__resizer").addEventListener("mousedown", () => {
 			slider.addEventListener("mousemove", resize)
-			slider.addEventListener("mouseup", () => {
-				slider.removeEventListener("mousemove", resize)
-			})
-			slider.addEventListener("mouseleave", () => {
-				slider.removeEventListener("mousemove", resize)
-			})
+			slider.classList.add("is-active")
+		})
+
+		slider.addEventListener("mouseup", () => {
+			slider.removeEventListener("mousemove", resize)
+			slider.classList.remove("is-active")
+		})
+
+		slider.addEventListener("mouseleave", () => {
+			slider.removeEventListener("mousemove", resize)
+			slider.classList.remove("is-active")
 		})
 	})
 }

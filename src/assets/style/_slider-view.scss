@@ -9,6 +9,10 @@
 		gap: 24px;
 	}
 
+	&.is-active {
+		user-select: none;
+	}
+
 	&__left {
 		overflow: auto;
 		position: relative;
