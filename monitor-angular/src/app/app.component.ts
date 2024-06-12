@@ -11,11 +11,11 @@ import { MeasurementComponent } from "./measurement/measurement.component"
 	standalone: true,
 	imports: [RouterOutlet, HeaderComponent, SliderViewComponent, EquipmentComponent, MeasurementComponent, FooterComponent],
 	templateUrl: './app.component.html',
-	styleUrl: './app.component.scss'
+	styleUrl: './app.component.scss',
 })
+
 export class AppComponent {
 	title = 'monitor-angular';
 	constructor() {
-
 	}
 }

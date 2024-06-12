@@ -44,7 +44,7 @@ function css() {
 		.pipe(replace("/src/", "../../"))
 		.pipe(sourcemaps.write("./"))
 		.pipe(destGulp.dest("./build/assets/style/"))
-		.pipe(argv.ram ? nothing() : destGulp.dest("./monitor-angular/assets/style/"))
+		.pipe(argv.ram ? nothing() : destGulp.dest("./monitor-angular/public/assets/style/"))
 		.pipe(bs.stream())
 }
 
@@ -67,7 +67,7 @@ function js() {
 		.pipe(replaceSrc())
 		.pipe(sourcemaps.write("./"))
 		.pipe(destGulp.dest("./build/assets/script/"))
-		.pipe(argv.ram ? nothing() : destGulp.dest("./monitor-angular/assets/script/"))
+		.pipe(argv.ram ? nothing() : destGulp.dest("./monitor-angular/public/assets/script/"))
 		.pipe(bs.stream())
 }
 
@@ -95,7 +95,7 @@ function copyStatic() {
 		encoding: false
 	})
 		.pipe(destGulp.dest("./build/assets/static/"))
-		.pipe(argv.ram ? nothing() : destGulp.dest("./monitor-angular/assets/static/"))
+		.pipe(argv.ram ? nothing() : destGulp.dest("./monitor-angular/public/assets/static/"))
 		.pipe(reload())
 }
 

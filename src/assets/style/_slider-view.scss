@@ -4,19 +4,34 @@
 	--resizer-width: 12px;
 	flex-grow: 1;
 
+	@media (max-width: $mobile) {
+		flex-direction: column;
+		gap: 24px;
+	}
+
 	&__left {
-		overflow: scroll;
+		overflow: auto;
 		position: relative;
 		flex: 1 1 calc(50% + var(--resize-delta) - var(--resizer-width) / 2);
 		padding-right: 30px;
 		padding-top: 16px;
+
+		@media (max-width: $mobile) {
+			padding-right: 0;
+			padding-top: 0;
+		}
 	}
 
 	&__right {
-		overflow: scroll;
+		overflow: auto;
 		flex: 1 1 calc(50% - var(--resize-delta) - var(--resizer-width) / 2);
 		padding-left: 30px;
 		padding-top: 16px;
+
+		@media (max-width: $mobile) {
+			padding-left: 0;
+			padding-top: 0;
+		}
 	}
 
 	&__resizer {
@@ -27,5 +42,10 @@
 		background-image: url(/src/assets/static/img/icon/resize.svg);
 		background-repeat: no-repeat;
 		background-position: center;
+
+		@media (max-width: $mobile) {
+			background-image: none;
+			pointer-events: none;
+		}
 	}
 }

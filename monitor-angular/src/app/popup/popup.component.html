@@ -1,13 +1,14 @@
 <!-- <button (click)="close()">save</button> -->
 <div class="popup" [class.is-active]="isOpen" (submit)="saveData(); false">
 	<div class="popup__inner" data-popup-inner>
-		<form class="table-form">
+		<form class="table-form" #form>
 			<label class="table-form__item" *ngFor="let cell of cellInfo; index as i">
 				<input type="text" [value]="fields[i] ?? getDefaultValue(cell.type)" #input [disabled]="!cell.editable && editMode" placeholder="{{cell.name}}" title="{{cell.name}}">
 			</label>
 			<div class="table-form__footer">
 				<button type="submit">{{editMode ? "Изменить" : "Добавить"}}</button>
 				<button type="reset">сбросить</button>
+				<button type="button" (click)="close()">закрыть</button>
 			</div>
 		</form>
 	</div>

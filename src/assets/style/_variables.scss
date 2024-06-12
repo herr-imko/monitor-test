@@ -1,8 +1,12 @@
 :root {
 	--header-margin: 24px;
-	--container-padding: 32px;
+	--container-padding: 31px;
 	--container-width: 1920px;
 	--default-duration: .3s;
 	--button-height: 32px;
 	--button-height--high: 38px;
+
+	@media (max-width: $mobile) {
+		--container-padding: 12px;
+	}
 }

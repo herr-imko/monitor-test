@@ -23,6 +23,7 @@ export class PopupComponent {
 
 	@Output() save = new EventEmitter();
 	@ViewChildren('input') inputs: QueryList<ElementRef<HTMLInputElement>> | undefined
+	@ViewChildren('form') form: ElementRef<HTMLFormElement> | undefined
 
 	constructor() {
 		let date = new Date()
@@ -51,6 +52,10 @@ export class PopupComponent {
 
 	close() {
 		this.isOpen = false
+	}
+
+	reset() {
+		this.form?.nativeElement.reset()
 	}
 
 	saveData() {

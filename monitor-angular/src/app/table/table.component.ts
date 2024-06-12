@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, inject, QueryList, ViewChild, ViewChildren, afterRender, afterNextRender } from '@angular/core'
+import { AfterViewInit, Component, ElementRef, inject, QueryList, ViewChild, ViewChildren, afterRender, afterNextRender, Input } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { FakedataService } from '../fakedata.service'
 import { PopupComponent } from '../popup/popup.component'
@@ -21,10 +21,13 @@ export class TableComponent implements AfterViewInit {
 		editable: boolean,
 		type: String | undefined
 	}[] = []
+
 	@ViewChild('checkAll') checkAll: ElementRef<HTMLInputElement> | undefined
 	@ViewChild('root') root: ElementRef<HTMLInputElement> | undefined
 	@ViewChild(PopupComponent) popup: PopupComponent | undefined
 	@ViewChildren('check') check: QueryList<ElementRef<HTMLInputElement>> | undefined
+
+	@Input() extraClass: String = ""
 
 	constructor() {
 		let that = this
@@ -57,7 +60,9 @@ export class TableComponent implements AfterViewInit {
 	}
 
 	removeItems() {
-		let toRemove = this.check?.toArray().map((checkbox, i) => checkbox.nativeElement.checked ? i : NaN).filter(Number)
+		let toRemove = this.check?.toArray().map((checkbox, i) => {
+			return checkbox.nativeElement.checked ? i : NaN
+		}).filter((value) => !isNaN(value))
 
 		this.data = this.data.filter(function (value, index) {
 			return toRemove?.indexOf(index) == -1
@@ -69,10 +74,33 @@ export class TableComponent implements AfterViewInit {
 		index: number
 	}) {
 		if (data.index < 0) {
-			this.data.push(data.data)
+			// как будто отправили запрос на добавление данных
+			this.fakeFetch()
+				.then(status => {
+					if (status) {
+						this.data.push(data.data)
+					}
+				})
+				.catch(error => {
+					alert("Не удалось обновить данные")
+				})
 		} else {
-			this.data[data.index] = data.data
+			// как будто отправили запрос на добавление данных
+			this.fakeFetch()
+				.then(status => {
+					if (status) {
+						this.data[data.index] = data.data
+					}
+				})
+				.catch(error => {
+					alert("Не удалось обновить данные")
+				})
 		}
+	}
+
+	async fakeFetch() {
+		return fetch('https://run.mocky.io/v3/33fd4463-e62d-4053-99df-6d045e1d764d')
+			.then(response => true)
 	}
 
 	edit(editMode: boolean) {

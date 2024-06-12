@@ -6,10 +6,18 @@
 		color: var(--color-black);
 	}
 
+	&--wide &__button {
+		padding: 0 16px;
+	}
+
 	&--high &__button {
 		padding: 10px 16px;
 		height: auto;
 		font-size: 18px;
+	}
+
+	&--medium &__button {
+		height: var(--button-height--high);
 	}
 
 	&__button {

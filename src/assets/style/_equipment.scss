@@ -23,21 +23,35 @@
 		&__item {
 			font-size: 22px;
 			font-weight: 400;
+			vertical-align: middle;
 
 			&:is(a) {
-				@extend .button, .button--high, .button--grey;
+				display: inline-flex;
+				align-items: center;
+				gap: 8px;
+				border-radius: 4px;
+				font-family: Roboto, sans-serif;
+				font-size: 16px;
+				font-weight: 400;
+				line-height: 22px;
+				padding: 6px 12px;
+				border: 1px solid #E0E0E0;
 
 				&::before {
 					content: '';
 					@extend .icon, .icon--menu;
+					--color: var(--color-grey4);
 				}
 			}
 		}
 
 		&__step {
+			font-family: Roboto, sans-serif;
 			font-size: 24px;
 			font-weight: 400;
 			margin: 0 10px;
+			color: var(--color-grey4);
+			vertical-align: middle;
 		}
 	}
 
@@ -45,5 +59,6 @@
 		display: flex;
 		justify-content: space-between;
 		gap: 20px;
+		flex-wrap: wrap;
 	}
 }

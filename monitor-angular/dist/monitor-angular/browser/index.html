@@ -4,23 +4,27 @@
 	<head>
 		<meta charset="utf-8">
 		<title>MonitorAngular</title>
-		<base href="/">
+		<base href="/monitor-test/monitor-angular/dist/monitor-angular/browser/">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="icon" type="image/x-icon" href="/monitor-test/monitor-angular/dist/monitor-angular/browser/favicon.ico">
+		<link rel="icon" type="image/x-icon" href="favicon.ico">
 		<style>
 			:root {
-				--mobile: 768px;
-				--tablet: 1024px;
-				--laptop: 1440px
+				--mobile: 1024px
 			}
 
 			:root {
 				--header-margin: 24px;
-				--container-padding: 32px;
+				--container-padding: 31px;
 				--container-width: 1920px;
 				--default-duration: .3s;
 				--button-height: 32px;
 				--button-height--high: 38px
+			}
+
+			@media (max-width: 1024px) {
+				:root {
+					--container-padding: 12px
+				}
 			}
 
 			:root {
@@ -32,12 +36,13 @@
 				--color-grey1: #e0e0e0;
 				--color-grey2: #bdbdbd;
 				--color-grey3: #666666;
+				--color-grey4: #828282;
 				--color-red: #C5182D
 			}
 
 			@font-face {
 				font-family: Segoe UI;
-				src: url("/monitor-test/monitor-angular/dist/monitor-angular/browser/media/SegoeUI-KY5YNCOM.woff2");
+				src: url("./media/SegoeUI-OJ334JY2.woff2");
 				font-weight: 400;
 				font-display: swap
 			}
@@ -79,15 +84,15 @@
 				flex-direction: column
 			}
 		</style>
-		<link rel="stylesheet" href="/monitor-test/monitor-angular/dist/monitor-angular/browser/styles-NFULZDGQ.css" media="print" onload="this.media='all'"><noscript>
-			<link rel="stylesheet" href="/monitor-test/monitor-angular/dist/monitor-angular/browser/styles-NFULZDGQ.css">
+		<link rel="stylesheet" href="/monitor-test/monitor-angular/dist/monitor-angular/browser/styles-TMMPFE6U.css" media="print" onload="this.media='all'"><noscript>
+			<link rel="stylesheet" href="/monitor-test/monitor-angular/dist/monitor-angular/browser/styles-TMMPFE6U.css">
 		</noscript>
 	</head>
 
 	<body>
 		<app-root></app-root>
 		<script src="/monitor-test/monitor-angular/dist/monitor-angular/browser/polyfills-6EAL64PA.js" type="module"></script>
-		<script src="/monitor-test/monitor-angular/dist/monitor-angular/browser/main-POGMPAID.js" type="module"></script>
+		<script src="/monitor-test/monitor-angular/dist/monitor-angular/browser/main-FT5HVJOM.js" type="module"></script>
 	</body>
 
 </html>

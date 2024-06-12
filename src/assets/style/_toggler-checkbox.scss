@@ -46,4 +46,12 @@
 			}
 		}
 	}
+
+	&--grey input[type="checkbox"] {
+		color: #bfbfbf;
+
+		&:checked {
+			color: var(--color-black);
+		}
+	}
 }
